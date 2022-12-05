@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insurance Challenge</title>
+    <link rel="stylesheet" href="bare.min.css">
+  </head>
+  <body>
+    <div style="padding: 20px 20px 20px 20px">
+        <h2>Insurance Challenge</h2>
+        <p>Search for insurance carriers below</p>
+        <div id="insurance_viewer_container" ></div>
+    </div>
+
+    <!-- Load React -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Load Babel -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Load our React component. -->
+    <script type="text/jsx" src="insurance_viewer.js"></script>
+
+  </body>
+</html>
