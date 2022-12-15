@@ -8,6 +8,7 @@ This project hosts a simple frontend and backend to surface data from the follow
 - Install a recent version of Node
 - Add a Google API key with access to GSheets to your env variables: `export GOOGLE_SHEETS_API_KEY=<your_key>`
 - `npm install`
+- `npm run build`
 - `npm start`
 - Navigate to `localhost:8081` in your web browser
 
@@ -20,10 +21,10 @@ This project hosts a simple frontend and backend to surface data from the follow
 - Frontend
 - - Improve error handling to give users an alert or message with details
 - - Add more advanced filtering to front-end with multi-selects and add support to carrier API
-- - Transpile code instead of using standalone React/Babel
-- - Split out frontend into separate components and files
+- - Split out App component a little more
 - Backend
 - - Handle larger data by writing files to disk and chunking
 - - Cache normalized carrier data in a SQLite DB and query from it rather than scraping all of GSheets on every request and filtering in memory
+- - Add pagination to API endpoint
 - - Add unit/integration/E2E tests
 - - Add linting

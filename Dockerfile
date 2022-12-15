@@ -11,7 +11,14 @@ FROM dependencies AS test
 COPY . .
 RUN npm test
 
-FROM base AS release
+FROM dependencies AS build
 COPY . .
+RUN npm run build
+
+FROM base AS release
+COPY package.json ./
 COPY --from=dependencies /var/www/prod_node_modules/ node_modules/
+COPY --from=build /var/www/dist/ dist/
+COPY --from=build /var/www/src/server src/server/
+ENV NODE_ENV=production
 CMD ["npm", "start"]

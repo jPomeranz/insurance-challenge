@@ -8,10 +8,10 @@ const app = express();
 app.use(healthcheckRoutes);
 app.use(carrierRoutes);
 
-app.use(express.static(__dirname + '/../client/'));
+app.use(express.static(__dirname + '/../../dist/'));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/index.html'));
+app.get('*', (_, res) => {
+  res.sendFile(path.join(__dirname + '/../../dist/index.html'));
 });
 
 app.listen(8081);
