@@ -31,10 +31,11 @@ class App extends Component {
     }
 
     render() {
-        const heading = ['State', 'PolicyType', 'Carrier'];
+        const headerLabels = ['State', 'Carrier', 'PolicyType'];
+        const headerKeys = ['state', 'carrierName', 'policyType'];
         return (
             <>
-                <div style={{padding: '20px 20px 20px 20px'}}>
+                <div style={{ padding: '20px 20px 20px 20px' }}>
                     <h2>Insurance Challenge</h2>
                     <p>Search for insurance carriers below</p>
                     <form onSubmit={this.handleSubmit} style={{ width: '10em' }}>
@@ -63,7 +64,7 @@ class App extends Component {
                         <input type='submit' value='Submit' />
                     </form>
                     <br />
-                    {this.state.carriers && <Table heading={heading} rows={this.state.carriers} />}
+                    {this.state.carriers && <Table labels={headerLabels} rowKeyOrder={headerKeys} rows={this.state.carriers} />}
                 </div>
 
             </>

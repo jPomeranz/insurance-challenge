@@ -2,29 +2,29 @@ import React, { Component } from 'react';
 
 class Table extends Component {
     render() {
-        const heading = this.props.heading;
-        const rows = this.props.rows;
+        const { labels, rowKeyOrder, rows } = this.props;
         return (
             <table style={{ width: 500 }}>
                 <thead>
                     <tr>
-                        {heading.map(head => <th key={head}>{head}</th>)}
+                        {labels.map(label => <th key={label}>{label}</th>)}
                     </tr>
                 </thead>
                 <tbody>
-                    {rows.map((row, index) => <TableRow row={row} key={index} />)}
+                    {rows.map((row, index) => <TableRow row={row} key={index} rowKeyOrder={rowKeyOrder} />)}
                 </tbody>
             </table>
         );
     }
 }
 
+// Accepts an object representing a row and a list of keys to output
 class TableRow extends Component {
     render() {
-        const row = this.props.row;
+        const { rowKeyOrder, row } = this.props;
         return (
             <tr>
-                {row.map((val, index) => <td style={{ textAlign: 'center' }} key={index}>{val}</td>)}
+                {rowKeyOrder.map((key, index) => <td style={{ textAlign: 'center' }} key={index}>{row[key]}</td>)}
             </tr>
         )
     }

@@ -41,7 +41,7 @@ function getAutoInsuranceCarriers(sheet) {
 }
 
 async function fetchCarriers() {
-    // Fetch all state/carrier tuples offered for each insurance type
+    // Fetch all state/carrier tuples offered for each insurance type,
     // TODO: Support chunking of datasets
     const fireAndAutoSheet = await googleSheets.fetchSheet(GOOGLE_SHEETS_SHEET_ID, GOOGLE_SHEETS_AUTO_FIRE_SHEET_NAME);
     const fireInsuranceCarriers = getFireInsuranceCarriers(fireAndAutoSheet);
@@ -52,15 +52,16 @@ async function fetchCarriers() {
     fireInsuranceCarriers.map(row => row.push('FIRE'));
     autoInsuranceCarriers.map(row => row.push('AUTO'));
     floodInsuranceCarriers.map(row => row.push('FLOOD'));
-    return [...fireInsuranceCarriers, ...autoInsuranceCarriers, ...floodInsuranceCarriers];
+    // Returns list of { state, carrierName, policyType}
+    return [...fireInsuranceCarriers, ...autoInsuranceCarriers, ...floodInsuranceCarriers].map(row => ({state: row[0], carrierName: row[1], policyType: row[2]}));
 }
 
 function filterCarriers(carriers, state, policyType) {
     return carriers.filter(carrier => {
-        if (state && state !== carrier[0]) {
+        if (state && state !== carrier.state) {
             return false;
         }
-        if (policyType && policyType !== carrier[2]) {
+        if (policyType && policyType !== carrier.policyType) {
             return false;
         }
         return true;
