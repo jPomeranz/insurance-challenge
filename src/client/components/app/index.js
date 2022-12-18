@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Table from '../table';
+import carrierService from '../../services/carriers';
 
 class App extends Component {
     constructor(props) {
@@ -16,18 +17,9 @@ class App extends Component {
 
     async handleSubmit(event) {
         event.preventDefault();
-        const carriers = await this.fetchCarriers(this.state.state, this.state.policyType);
-        this.setState({ carriers });
-    }
-
-    async fetchCarriers(state, policyType) {
-        const response = await fetch('/carriers?' + new URLSearchParams({
-            state,
-            policyType,
-        }));
+        const carriers = await carrierService.fetchCarriers(this.state.state, this.state.policyType);
         // TODO: Handle errors
-        const jsonResponse = await response.json();
-        return jsonResponse.carriers;
+        this.setState({ carriers });
     }
 
     render() {
