@@ -7,7 +7,7 @@ class Table extends Component {
             <table style={{ width: 500 }}>
                 <thead>
                     <tr>
-                        {labels.map(label => <th key={label}>{label}</th>)}
+                        {labels.map(label => <th style={{ textAlign: 'center' }} key={label}>{label}</th>)}
                     </tr>
                 </thead>
                 <tbody>
